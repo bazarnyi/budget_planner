@@ -30,8 +30,9 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'database_cleaner'
-  gem 'rspec-rails', '~> 3.7'
+  gem 'dotenv-rails'
   gem 'shoulda-matchers'
+  gem 'rspec-rails', '~> 3.7'
   gem 'reek'
   gem 'rubocop', require: false
   gem 'rubocop-rspec'
