@@ -13,13 +13,14 @@
 !/log/.keep
 !/tmp/.keep
 
-/node_modules
 /yarn-error.log
 
 .byebug_history
 
 .idea/
 .env
+.DS_Store
+
 /public/packs
 /public/packs-test
 /node_modules
