@@ -13,20 +13,10 @@
 # it.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+require File.expand_path("../../config/environment", __FILE__)
 
 require 'capybara/rspec'
 require 'selenium-webdriver'
-
-Capybara.app_host = 'http://localhost:3001'
-Capybara.server_host = 'localhost'
-Capybara.server_port = '3001'
-
-# setting Capybara driver
-Capybara.default_driver = :selenium
-Capybara.register_driver :selenium do |app|
-  Capybara::Selenium::Driver.new(app, browser: :chrome, options: Selenium::WebDriver::Chrome::Options.new(args: %w[window-size=1800,1000]))
-end
-
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
@@ -108,4 +98,15 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 =end
+end
+
+Capybara.app_host = 'http://localhost:3001'
+Capybara.server_host = 'localhost'
+Capybara.server_port = '3001'
+
+# setting Capybara driver
+Capybara.javascript_driver = :selenium
+Capybara.register_driver :selenium do |app|
+  # Capybara::Selenium::Driver.new(app, browser: :chrome, options: Selenium::WebDriver::Chrome::Options.new(args: %w[window-size=1800,1000]))
+  Capybara::Selenium::Driver.new(app, browser: :chrome, options: Selenium::WebDriver::Chrome::Options.new(args: %w[window-size=1800,1000 --headless]))
 end
