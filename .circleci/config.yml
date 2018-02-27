@@ -44,14 +44,18 @@ jobs:
       - run: bundle exec rake db:create
       - run: bundle exec rake db:migrate
 
+      # Up Chromedriver
+      - run:
+          name: Runnigng Chromedriver
+          command: |
+            wget http://chromedriver.storage.googleapis.com/2.22/chromedriver_linux32.zip
+            unzip chromedriver_linux32.zip
+            ./chromedriver --port=4444 --url-base=we/hub:
+            background: true
+
       # run tests!
       - run:
           name: run tests
-          pre:
-            - wget http://chromedriver.storage.googleapis.com/2.22/chromedriver_linux32.zip
-            - unzip chromedriver_linux32.zip
-            - ./chromedriver --port=4444 --url-base=we/hub:
-                background: true
           command: |
             mkdir /tmp/test-results
             TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)"
