@@ -24,16 +24,16 @@ DataClump:
 # You can configure smells on a per-directory base.
 # E.g. the classic Rails case: controllers smell of NestedIterators (see /docs/Nested-Iterators.md) and
 # helpers smell of UtilityFunction (see docs/Utility-Function.md)
-"web_app/app/controllers":
-  NestedIterators:
-    enabled: false
-"web_app/app/helpers":
-  UtilityFunction:
-    enabled: false
+# "/app/controllers":
+#  NestedIterators:
+#    enabled: false
+# "/app/helpers":
+#   UtilityFunction:
+#     enabled: false
 
 ### Excluding directories
 
 # Directories below will not be scanned at all
-exclude_paths:
-  - lib/legacy
-  - lib/rake/legacy_tasks
+# exclude_paths:
+#   - lib/legacy
+#   - lib/rake/legacy_tasks
