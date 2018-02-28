@@ -52,9 +52,13 @@ jobs:
           command: reek app/
 
       # Database setup
-      - run: bundle exec rake db:create
-      - run: bundle exec rake db:migrate
+      - run:
+          name: Database setup
+          command: |
+            bundle exec rake db:create
+            bundle exec rake db:migrate
 
+      # Installing Chrome for Feature Testing
       - run:
           name: Install latest version of Chrome
           command: |
@@ -80,15 +84,16 @@ jobs:
           name: Running X virtual framebuffer
           command: Xvfb :0 -ac &
 
+      # Compiling Webpacker assets
       - run:
           name: Compiling assets
           command: |
             yarn
             rails webpacker:compile
 
-      # run tests!
+      # Run tests
       - run:
-          name: run tests
+          name: Run tests
           command: |
             TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)"
 
@@ -98,7 +103,7 @@ jobs:
                             --format progress \
                             $TEST_FILES
 
-      # collect reports
+      # Collecting reports
       - store_test_results:
           path: /tmp/test-results
       - store_artifacts:
