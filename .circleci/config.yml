@@ -43,8 +43,8 @@ jobs:
       - run:
           name: Run Rubocop
           command: |
-            mkdir -p /tmp/rubocop
-            bundle exec rubocop rubocop --format html --out /tmp/rubocop/rubocop.html
+            mkdir -p /tmp/test-results
+            bundle exec rubocop rubocop --format html --out /tmp/test-results/rubocop.html
 
       # Database setup
       - run: bundle exec rake db:create
