@@ -44,7 +44,7 @@ jobs:
           name: Run Rubocop
           command: |
             mkdir -p /tmp/rubocop
-            bundle exec rubocop --format RuboCop::Formatter::JUnitFormatter --out /tmp/rubocop/rubocop.xml
+            bundle exec rubocop rubocop --format html --out /tmp/rubocop/rubocop.html
 
       # Database setup
       - run: bundle exec rake db:create
