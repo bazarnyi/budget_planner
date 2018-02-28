@@ -47,6 +47,10 @@ jobs:
           name: Run Rubocop
           command: bundle exec rubocop --fail-level E --format html --out /tmp/test-results/rubocop.html
 
+      - run:
+          name: Run Reek
+          command: reek app/
+
       # Database setup
       - run: bundle exec rake db:create
       - run: bundle exec rake db:migrate
