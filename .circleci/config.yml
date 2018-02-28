@@ -43,7 +43,7 @@ jobs:
       - run:
           name: Run Rubocop
           command: |
-            test_reports_dir=$CIRCLE_TEST_REPORTS/rubocop
+            test_reports_dir= /tmp/rubocop
             mkdir -p $test_reports_dir
             junit_formatter_ruby=$(bundle show rubocop-junit-formatter)/lib/rubocop/formatter/junit_formatter.rb
             bundle exec rubocop -L | \
