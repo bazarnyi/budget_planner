@@ -41,10 +41,11 @@ jobs:
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
 
       - run:
+          name: Creating artifacts folder
+          command: mkdir -p /tmp/test-results
+      - run:
           name: Run Rubocop
-          command: |
-            mkdir -p /tmp/test-results
-            bundle exec rubocop rubocop --format html --out /tmp/test-results/rubocop.html
+          command: bundle exec rubocop --format html --out /tmp/test-results/rubocop.html
 
       # Database setup
       - run: bundle exec rake db:create
@@ -85,7 +86,6 @@ jobs:
       - run:
           name: run tests
           command: |
-            mkdir /tmp/test-results
             TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)"
 
             bundle exec rspec --format progress \
