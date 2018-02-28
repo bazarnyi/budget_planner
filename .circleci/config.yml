@@ -45,21 +45,21 @@ jobs:
           command: mkdir -p /tmp/test-results
       - run:
           name: Run Rubocop
-          command: bundle exec rubocop --format html --out /tmp/test-results/rubocop.html
+          command: bundle exec rubocop --fail-level E --format html --out /tmp/test-results/rubocop.html
 
       # Database setup
       - run: bundle exec rake db:create
       - run: bundle exec rake db:migrate
 
       - run:
-          name: Install latest version of ChromeDriver Sample
+          name: Install latest version of Chrome
           command: |
             sudo wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
             sudo sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
             sudo apt-get update
             sudo apt-get install google-chrome-unstable
       - run:
-          name: Install latest version of ChromeDriver Sample
+          name: Install latest version of ChromeDriver
           command: |
             sudo wget https://chromedriver.storage.googleapis.com/2.35/chromedriver_linux64.zip
             sudo unzip chromedriver_linux64.zip
