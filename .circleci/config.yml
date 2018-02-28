@@ -44,8 +44,7 @@ jobs:
           name: Run Rubocop
           command: |
             mkdir -p /tmp/rubocop
-            junit_formatter_ruby=$(bundle show rubocop-junit-formatter)/lib/rubocop/formatter/junit_formatter.rb
-            bundle exec rubocop -D -R -r $junit_formatter_ruby -c .rubocop.yml --format RuboCop::Formatter::JUnitFormatter --out /tmp/rubocop/rubocop.xml
+            bundle exec rubocop --format RuboCop::Formatter::JUnitFormatter --out /tmp/rubocop/rubocop.xml
 
       # Database setup
       - run: bundle exec rake db:create
