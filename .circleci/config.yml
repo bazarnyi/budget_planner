@@ -47,7 +47,7 @@ jobs:
           name: Run Rubocop
           command: bundle exec rubocop --fail-level E --format html --out /tmp/test-results/rubocop.html
 
-      -run:
+      - run:
           name: Run Reek
           command: reek app/
 
