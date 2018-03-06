@@ -32,6 +32,9 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'rspec-rails', '~> 3.7'
   gem 'shoulda-matchers'
+  gem 'reek'
+  gem 'rubocop', require: false
+  gem 'rubocop-rspec'
 end
 
 group :development do
