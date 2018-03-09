@@ -1,15 +1,13 @@
+require 'rails_helper'
+
 RSpec.describe HomePageController do
   describe "GET #index" do
-    subject { get :index }
+    let(:do_request) { get :index }
 
     it "renders the index template" do
-      expect(subject).to render_template(:index)
-      expect(subject).to render_template("index")
-      expect(subject).to render_template("home_page/index")
-    end
-
-    it "does not render a different template" do
-      expect(subject).not_to render_template("home_page/show")
+      do_request
+      expect(response).to have_http_status(:ok)
+      expect(response).to render_template(:index)
     end
   end
 end
