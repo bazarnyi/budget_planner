@@ -35,6 +35,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'faker'
   gem 'factory_bot_rails'
+  gem 'foreman'
   gem 'rails-controller-testing'
   gem 'rspec-rails', '~> 3.7'
   gem 'rspec_junit_formatter'

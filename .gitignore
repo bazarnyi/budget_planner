@@ -19,6 +19,7 @@
 
 .idea/
 .env
+Procfile
 
 .DS_Store
 
