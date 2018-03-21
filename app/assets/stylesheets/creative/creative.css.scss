@@ -488,3 +488,12 @@ body {
   color: #f05f40;
   line-height: 1.5;
 }
+
+input[type=submit] {
+  border-color: #f05f40;
+  color: #fff;
+  background-color: #f05f40;
+  -webkit-transition: all .35s;
+  -moz-transition: all .35s;
+  transition: all .35s;
+}
