@@ -10,7 +10,11 @@ require 'capybara/rails'
 require 'spec_helper'
 
 require 'support/factory_bot'
+require 'site_prism'
 require 'devise'
+
+require_all 'spec/support/pages/sections'
+require_all 'spec/support/pages/pages'
 
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
