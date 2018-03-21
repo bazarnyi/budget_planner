@@ -1,0 +1,16 @@
+nav#mainNav.navbar.navbar-default.navbar-fixed-top
+  .container-fluid
+    .navbar-header
+      button.navbar-toggle.collapsed[type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"]
+        span.sr-only
+          | Toggle navigation
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      a.navbar-brand.page-scroll[href="#page-top"]
+        | Budget Planner
+      span.notice
+        = notice
+      span.alert
+        = alert
+    = render 'navigation/user_menu'
