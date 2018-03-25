@@ -1,7 +1,8 @@
 //= require jquery
-//= require jquery_ujs
+//= require jquery-ujs
 //= require turbolinks
-//= require bootstrap
+//= require bootstrap/dist/js/bootstrap
+//= require bootstrap-sass/assets/javascripts/bootstrap
 //= require creative/cbpAnimatedHeader
 //= require creative/classie
 //= require creative/jquery.easing.min
