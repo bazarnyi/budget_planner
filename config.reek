@@ -3,3 +3,14 @@ IrresponsibleModule:
 
 NestedIterators:
   enabled: false
+
+"app/controllers":
+  TooManyStatements:
+    max_statements: 10
+
+UncommunicativeMethodName:
+  accept:
+    - google_oauth2
+
+DuplicateMethodCall:
+  max_calls: 2
