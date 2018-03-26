@@ -1,25 +1,21 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def github
-    @user = User.from_omniauth(request.env["omniauth.auth"])
-
-    if @user.persisted?
-      sign_in @user, event: :authentication
-      set_flash_message(:notice, :success, kind: "Github") if is_navigational_format?
-      redirect_to root_path
-    else
-      session["devise.github_data"] = @user.attributes
-      redirect_to new_user_registration_url
-    end
+    oauth 'github'
   end
 
   def google_oauth2
-    @user = User.from_omniauth(request.env["omniauth.auth"])
+    oauth 'google_oauth2'
+  end
 
-    if @user.persisted?
-      sign_in_and_redirect @user, event: :authentication
-      set_flash_message(:notice, :success, kind: "Google") if is_navigational_format?
+  def oauth(provider)
+    user = User.from_omniauth(request.env["omniauth.auth"])
+
+    if user.persisted?
+      sign_in user, event: :authentication
+      set_flash_message(:notice, :success, kind: "#{provider}") if is_navigational_format?
+      redirect_to root_path
     else
-      session["devise.google_oauth2_data"] = @user.attributes
+      session["devise.#{provider}_data"] = user.attributes
       redirect_to new_user_registration_url
     end
   end
