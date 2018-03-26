@@ -15,7 +15,6 @@ RSpec.describe HomePageController do
     context 'logged in user' do
 
       user = FactoryBot.create(:user)
-      user.confirm
 
       it 'renders the index template' do
         sign_in user

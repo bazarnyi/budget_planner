@@ -1,5 +1,6 @@
 class HomePageController < ApplicationController
+  before_action :auth_user
+
   def index
-    redirect_to controller: 'welcome', action: 'index' unless user_signed_in?
   end
 end
