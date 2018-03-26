@@ -1,5 +1,4 @@
 feature 'Home Page interaction', js: true do
-
   let(:home_page) { HomePage.new }
   let(:welcome_page) { WelcomePage.new }
   let(:sign_up_page) { SignUpPage.new }

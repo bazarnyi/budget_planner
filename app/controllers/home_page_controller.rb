@@ -1,5 +1,5 @@
 class HomePageController < ApplicationController
-  before_action :auth_user
+  before_action :authenticate_user
 
   def index
   end

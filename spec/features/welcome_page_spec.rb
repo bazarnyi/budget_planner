@@ -1,5 +1,4 @@
 feature 'Welcome Page interaction', js: true do
-
   let(:welcome_page) { WelcomePage.new }
   before(:each) { welcome_page.load }
 
@@ -11,5 +10,4 @@ feature 'Welcome Page interaction', js: true do
     expect(welcome_page.menu).to have_sign_in_link
     expect(welcome_page.menu).to have_sign_up_link
   end
-
 end
