@@ -6,11 +6,11 @@
           = current_user.email
       li
         a.page-scroll[href=destroy_user_session_path]
-          | Logout
+          = t('user_menu.logout_btn')
     - else
       li
         a.page-scroll[href=new_user_session_path]
-          | Sign in
+          = t('user_menu.sign_in_btn')
       li
         a.page-scroll[href=new_user_registration_path]
-          | Sign up
+          = t('user_menu.sign_up_btn')

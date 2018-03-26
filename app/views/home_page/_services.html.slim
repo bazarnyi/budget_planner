@@ -3,7 +3,7 @@ section.bg-dark#services
     .row
       .col-lg-12.text-center
         h2.section-heading
-          | You are logged in! Budget Planner At Your Service
+          = t('home_page.logged_in_msg')
         hr.primary
   .container
     .row
@@ -11,27 +11,27 @@ section.bg-dark#services
         .service-box
           i.fa.fa-4x.fa-diamond.wow.bounceIn.text-primary
           h3
-            | Reliable application
+            = t('home_page.features.feature_block_1.name')
           p.text-muted
-            | Our App is tested regularly so it don't break.
+            = t('home_page.features.feature_block_1.desc')
       .col-lg-3.col-md-6.text-center
         .service-box
           i.fa.fa-4x.fa-paper-plane.wow.bounceIn.text-primary[data-wow-delay=".1s"]
           h3
-            | Ready to Ship
+            = t('home_page.features.feature_block_2.name')
           p.text-muted
-            | You can use this theme as is, or you can make changes!
+            = t('home_page.features.feature_block_2.desc')
       .col-lg-3.col-md-6.text-center
         .service-box
           i.fa.fa-4x.fa-newspaper-o.wow.bounceIn.text-primary[data-wow-delay=".2s"]
           h3
-            | Up to Date
+            = t('home_page.features.feature_block_3.name')
           p.text-muted
-            | We update dependencies to keep things fresh.
+            = t('home_page.features.feature_block_3.desc')
       .col-lg-3.col-md-6.text-center
         .service-box
           i.fa.fa-4x.fa-heart.wow.bounceIn.text-primary[data-wow-delay=".3s"]
           h3
-            | Made with Love
+            = t('home_page.features.feature_block_4.name')
           p.text-muted
-            | You have to make your websites with love these days!
+            = t('home_page.features.feature_block_4.desc')

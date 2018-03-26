@@ -2,14 +2,14 @@ header
   .header-content
     .header-content-inner
       h1
-        | Welcome to
+        = t('welcome_page.welcome_msg')
         br
-        | Budget Planner
+        = t(:app_name)
       hr
       p
-        | This small nice and shiny app will help you to boost up your budget and save some money for future fantastic endeavours
+        = t('welcome_page.desc_msg')
       a.btn.btn-primary.btn-xl.page-scroll[href=new_user_session_path]
-        | Sign in
+        = t('user_menu.sign_in_btn')
       =>
       a.btn.btn-primary.btn-xl.page-scroll[href=new_user_registration_path]
-        | Sign up
+        = t('user_menu.sign_up_btn')
