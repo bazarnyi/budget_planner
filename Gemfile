@@ -27,6 +27,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 
 gem 'devise'
+gem 'slim-rails'
 gem 'webpacker'
 
 group :development, :test do
@@ -36,6 +37,7 @@ group :development, :test do
   gem 'faker'
   gem 'factory_bot_rails'
   gem 'foreman'
+  gem 'i18n-tasks'
   gem 'rails-controller-testing'
   gem 'rspec-rails', '~> 3.7'
   gem 'rspec_junit_formatter'
