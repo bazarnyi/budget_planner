@@ -16,9 +16,10 @@ class Users::Omniauth
   end
 
   def update_user
-    user = User.where(email: auth.info.email).first
-    User.update(user.id, { provider: auth.provider, uid: auth.uid }) unless user.nil?
-    user
+    if user = User.where(email: auth.info.email).first
+      User.update(user.id, { provider: auth.provider, uid: auth.uid })
+      user
+    end
   end
 
   def create_user

@@ -12,6 +12,7 @@ require 'spec_helper'
 require 'support/factory_bot'
 require 'site_prism'
 require 'devise'
+require 'support/stub_helper'
 
 require_all 'spec/support/pages/sections'
 require_all 'spec/support/pages/pages'
@@ -74,4 +75,5 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
   #
   config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include StubHelper, type: :controller
 end
