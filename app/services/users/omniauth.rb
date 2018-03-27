@@ -4,7 +4,7 @@ class Users::Omniauth
   end
 
   def user
-    find_user || create_user
+    find_user || update_user || create_user
   end
 
   private
@@ -13,6 +13,12 @@ class Users::Omniauth
 
   def find_user
     User.where(provider: auth.provider, uid: auth.uid).first
+  end
+
+  def update_user
+    user = User.where(email: auth.info.email).first
+    User.update(user.id, { provider: auth.provider, uid: auth.uid }) unless user.nil?
+    user
   end
 
   def create_user
