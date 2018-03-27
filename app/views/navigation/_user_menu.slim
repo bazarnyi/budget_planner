@@ -1,0 +1,16 @@
+#bs-example-navbar-collapse-1.collapse.navbar-collapse
+  ul.nav.navbar-nav.navbar-right
+    - if user_signed_in?
+      li
+        a.page-scroll[href=edit_user_registration_path]
+          = current_user.email
+      li
+        a.page-scroll[href=destroy_user_session_path]
+          = t('user_menu.logout_btn')
+    - else
+      li
+        a.page-scroll[href=new_user_session_path]
+          = t('user_menu.sign_in_btn')
+      li
+        a.page-scroll[href=new_user_registration_path]
+          = t('user_menu.sign_up_btn')

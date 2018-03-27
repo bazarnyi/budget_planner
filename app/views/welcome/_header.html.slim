@@ -1,0 +1,15 @@
+header
+  .header-content
+    .header-content-inner
+      h1
+        = t('welcome_page.welcome_msg')
+        br
+        = t(:app_name)
+      hr
+      p
+        = t('welcome_page.desc_msg')
+      a.btn.btn-primary.btn-xl.page-scroll[href=new_user_session_path]
+        = t('user_menu.sign_in_btn')
+      =>
+      a.btn.btn-primary.btn-xl.page-scroll[href=new_user_registration_path]
+        = t('user_menu.sign_up_btn')

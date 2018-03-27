@@ -39,9 +39,10 @@ group :development, :test do
   gem 'foreman'
   gem 'i18n-tasks'
   gem 'rails-controller-testing'
+  gem 'reek'
+  gem 'require_all'
   gem 'rspec-rails', '~> 3.7'
   gem 'rspec_junit_formatter'
-  gem 'reek'
   gem 'rubocop', require: false
   gem 'rubocop-rspec'
   gem 'shoulda-matchers'
@@ -55,8 +56,9 @@ end
 
 group :test do
   gem 'capybara'
-  gem 'selenium-webdriver'
   gem 'chromedriver-helper'
+  gem 'selenium-webdriver'
+  gem 'site_prism'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

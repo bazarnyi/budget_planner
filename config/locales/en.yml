@@ -1,3 +1,32 @@
 ---
 en:
   app_name: Budget Planner
+  contact:
+    contact_msg: Ready to start your next project with us? That's great! Give us a call or send us an email and we will get back to you as soon as possible!
+    email: den.bazarny@gmail.com
+    phone: 123-456-6789
+    questions_msg: Have any questions? Let's Get In Touch!
+  home_page:
+    features:
+      feature_block_1:
+        desc: Our App is tested regularly so it don't break.
+        name: Reliable application
+      feature_block_2:
+        desc: You can use this theme as is, or you can make changes!
+        name: Ready to Ship
+      feature_block_3:
+        desc: We update dependencies to keep things fresh.
+        name: Up to Date
+      feature_block_4:
+        desc: You have to make your websites with love these days!
+        name: Made with Love
+    logged_in_msg: You are logged in! Budget Planner At Your Service
+  navbar:
+    toggle_nav: Toggle navigation
+  user_menu:
+    logout_btn: Logout
+    sign_in_btn: Sign in
+    sign_up_btn: Sign up
+  welcome_page:
+    desc_msg: This small nice and shiny app will help you to boost up your budget and save some money for future fantastic endeavours
+    welcome_msg: Welcome to
