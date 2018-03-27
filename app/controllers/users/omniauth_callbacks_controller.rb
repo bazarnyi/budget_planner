@@ -8,8 +8,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def oauth(provider)
-    user = User.from_omniauth(request.env["omniauth.auth"])
-
     if user.persisted?
       sign_in user, event: :authentication
       set_flash_message(:notice, :success, kind: "#{provider}") if is_navigational_format?
@@ -22,5 +20,11 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def failure
     redirect_to root_path
+  end
+
+  private
+
+  def user
+    @user ||= Users::Omniauth.new(request.env['omniauth.auth']).user
   end
 end
