@@ -1,48 +1,56 @@
 require 'rails_helper'
 
 RSpec.describe Users::Omniauth do
-  describe 'create omniauth connection' do
-    context 'existing omniauth user' do
-      let(:github_user) { FactoryBot.create(:user, :github) }
-      let(:google_user) { FactoryBot.create(:user, :google) }
+  describe '.user' do
+    context 'when omniauth user exists' do
+      let(:auth) { double(provider: user.provider, uid: user.uid) }
+      let(:auth_service) { described_class.new(auth) }
 
-      it 'finds user' do
-        [github_user, google_user].each do |u|
-          auth = double(provider: u.provider, uid: u.uid)
+      context 'for google' do
+        let!(:user) { FactoryBot.create(:user, :google) }
 
-          expect(Users::Omniauth.new(auth).user.uid).to eq u.uid
-        end
+        include_examples 'finds ouath user'
+      end
+
+      context 'for github' do
+        let!(:user) { FactoryBot.create(:user, :github) }
+
+        include_examples 'finds ouath user'
       end
     end
 
-    context 'new omniauth user' do
-      let(:github_user) { FactoryBot.build(:user, :github) }
-      let(:google_user) { FactoryBot.build(:user, :google) }
+    context 'when omniauth user does not exist' do
+      let(:auth) { double(provider: user.provider, uid: user.uid, info: double(email: user.email)) }
+      let(:auth_service) { described_class.new(auth) }
 
-      it 'creates new user' do
-        [github_user, google_user].each do |u|
-          auth = double(provider: u.provider, uid: u.uid, info: double(email: u.email))
+      context 'for google' do
+        let!(:user) { FactoryBot.build(:user, :google) }
 
-          Users::Omniauth.new(auth).user
+        include_examples 'creates ouath user'
+      end
 
-          expect(User.last.email).to eq u.email
-        end
+      context 'for github' do
+        let!(:user) { FactoryBot.build(:user, :github) }
+
+        include_examples 'creates ouath user'
       end
     end
 
-    context 'existing user without omniauth' do
-      let(:github_user) { FactoryBot.build(:user, :github) }
-      let(:google_user) { FactoryBot.build(:user, :google) }
+    context 'when user exist but with no omniauth' do
+      let(:registered_user) { FactoryBot.create(:user) }
+      let(:auth) { double(provider: user.provider, uid: user.uid, info: double(email: registered_user.email)) }
+      let(:auth_service) { described_class.new(auth) }
 
-      it 'creates new user' do
-        [github_user, google_user].each do |u|
-          user = FactoryBot.create(:user)
-          auth = double(provider: u.provider, uid: u.uid, info: double(email: user.email))
+      context 'for google' do
+        let!(:user) { FactoryBot.build(:user, :google) }
 
-          Users::Omniauth.new(auth).user
+        include_examples 'updates ouath user'
+      end
 
-          expect(User.find(user.id).uid).to eq u.uid
-        end
+      context 'for github' do
+        let!(:user) { FactoryBot.build(:user, :github) }
+
+        include_examples 'updates ouath user'
       end
     end
   end
