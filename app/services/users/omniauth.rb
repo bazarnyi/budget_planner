@@ -4,29 +4,32 @@ class Users::Omniauth
   end
 
   def user
-    find_user || update_user || create_user
+    find_user_by_uid || update_user || create_user
   end
 
   private
 
   attr_reader :auth
 
-  def find_user
-    User.where(provider: auth.provider, uid: auth.uid).first
+  def find_user_by_uid
+    User.find_by(provider: auth.provider, uid: auth.uid)
+  end
+
+  def find_user_by_email
+    User.find_by(email: auth.info.email)
   end
 
   def update_user
-    if user = User.where(email: auth.info.email).first
-      User.update(user.id, { provider: auth.provider, uid: auth.uid })
-      user
-    end
+    find_user_by_email.update(provider: auth.provider, uid: auth.uid) if find_user_by_email
   end
 
   def create_user
-    User.where(provider: auth.provider, uid: auth.uid).create do |user|
-      user.email = auth.info.email
-      user.password = Devise.friendly_token[0, 20]
-      user.skip_confirmation!
-    end
+    User.create!(
+        provider: auth.provider,
+        uid: auth.uid,
+        email: auth.info.email,
+        password: Devise.friendly_token[0, 20],
+        confirmed_at: Time.zone.now
+    )
   end
 end
