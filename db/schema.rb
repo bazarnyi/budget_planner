@@ -15,18 +15,17 @@ ActiveRecord::Schema.define(version: 20180329065412) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "envelops", force: :cascade do |t|
-    t.decimal "amount"
-    t.integer "category", default: 0, null: false
+  create_table "accounts", force: :cascade do |t|
+    t.integer "amount", default: 0, null: false
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_envelops_on_user_id"
+    t.index ["user_id"], name: "index_accounts_on_user_id"
   end
 
   create_table "transactions", force: :cascade do |t|
-    t.decimal "amount", null: false
-    t.datetime "date"
+    t.integer "amount", null: false
+    t.datetime "date", default: "2018-04-01 00:00:00", null: false
     t.string "comment"
     t.bigint "user_id"
     t.datetime "created_at", null: false
@@ -58,6 +57,6 @@ ActiveRecord::Schema.define(version: 20180329065412) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "envelops", "users"
+  add_foreign_key "accounts", "users"
   add_foreign_key "transactions", "users"
 end

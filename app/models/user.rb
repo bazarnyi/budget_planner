@@ -4,5 +4,5 @@ class User < ApplicationRecord
          :confirmable, :omniauthable, omniauth_providers: [:github, :google_oauth2]
 
   has_many :transactions, dependent: :destroy
-  has_many :envelops, dependent: :destroy
+  has_many :accounts, dependent: :destroy
 end
