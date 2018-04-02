@@ -30,6 +30,7 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-github'
 gem 'omniauth-google-oauth2'
+gem 'pundit'
 gem 'slim-rails'
 gem 'webpacker'
 
