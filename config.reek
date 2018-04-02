@@ -3,3 +3,10 @@ IrresponsibleModule:
 
 NestedIterators:
   enabled: false
+
+UncommunicativeMethodName:
+  accept:
+    - google_oauth2
+
+DuplicateMethodCall:
+  max_calls: 2
