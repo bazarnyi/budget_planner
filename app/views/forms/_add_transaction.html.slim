@@ -1,0 +1,13 @@
+section#add_transaction
+  .container
+    .row
+      .col-lg-8.col-lg-offset-2.text-center
+        h2.section-heading
+          = t('transaction_form.form_msg')
+        hr.primary
+        p
+        = simple_form_for @form, url: transactions_path, remote: true do |f|
+          = f.input :amount
+          = f.input :date, as: :string, order: [:day, :month, :year]
+          = f.input :comment
+          = f.button :submit, class: 'btn btn-outline-success'
