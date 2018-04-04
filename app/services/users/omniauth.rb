@@ -25,11 +25,11 @@ class Users::Omniauth
 
   def create_user
     User.create!(
-        provider: auth.provider,
-        uid: auth.uid,
-        email: auth.info.email,
-        password: Devise.friendly_token[0, 20],
-        confirmed_at: Time.zone.now
+      provider: auth.provider,
+      uid: auth.uid,
+      email: auth.info.email,
+      password: Devise.friendly_token[0, 20],
+      confirmed_at: Time.zone.now
     )
   end
 end

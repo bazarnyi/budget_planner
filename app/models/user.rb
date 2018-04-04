@@ -4,5 +4,13 @@ class User < ApplicationRecord
          :confirmable, :omniauthable, omniauth_providers: [:github, :google_oauth2]
 
   has_many :transactions, dependent: :destroy
-  has_many :accounts, dependent: :destroy
+  has_one :account, dependent: :destroy
+
+  after_create :create_account
+
+  private
+
+  def create_account
+    Account.create(user_id: id)
+  end
 end
