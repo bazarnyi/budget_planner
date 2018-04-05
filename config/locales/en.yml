@@ -30,3 +30,5 @@ en:
   welcome_page:
     desc_msg: This small nice and shiny app will help you to boost up your budget and save some money for future fantastic endeavours
     welcome_msg: Welcome to
+  transaction_form:
+    form_msg: You can add new transaction right away

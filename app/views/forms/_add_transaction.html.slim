@@ -6,7 +6,7 @@ section#add_transaction
           = t('transaction_form.form_msg')
         hr.primary
         p
-        = simple_form_for @form, url: transactions_path, remote: true do |f|
+        = simple_form_for @form, url: new_transaction_url, remote: true do |f|
           = f.input :amount
           = f.input :date, as: :string, order: [:day, :month, :year]
           = f.input :comment
